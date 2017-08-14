@@ -1,7 +1,7 @@
 # TyPy :space_invader:
 ### 1 decorator, multiple possibilities of type checking  
 
-**Remember**: TyPy decorator automarically skips arguments without annotations, so don't worry  
+**Remember**: TyPy decorator automatically skips arguments without annotations, so don't worry  
 if you want to keep some of them unchecked :wink:
 
 ### Before we get started, take a look at this example:
