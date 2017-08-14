@@ -28,10 +28,10 @@
 **_Remember:_ values with a subclass type of the required type are also accepted**
 
 #### value: type 
-Simplest checking, only class of type are allowed**
+Simplest checking, only class of type are allowed
 
 #### value: { type1, type2, type3... }
-Checks if value type is one of the types**  
+Checks if value type is one of the types
   
 #### value: [type1, type2] 
 Checks if the value type is on the first element, then checks if 
@@ -43,7 +43,7 @@ Also, the list can be nested so you can check for data structures inside other d
 Checks for a tuple whose elements are of the given types. For example
 if the type checking is set to (bool, str, int), one valid value would be (True, "hello", 3).
 Type checking also fails if the given tuple differs in length of the value. This type checking
-is useful for key-value values (e.g. ("number", 3))**
+is useful for key-value values (e.g. ("number", 3))
   
 
 
