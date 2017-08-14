@@ -32,7 +32,7 @@ if you want to keep some of them unchecked :wink:
 **_Remember:_ values with a subclass type of the required type are also accepted**
 
 #### value: type 
-Simplest checking, only class of type are allowed
+Simplest way of checking, only class of type are allowed
 
 #### value: { type1, type2, type3... }
 Checks if value type is one of the types
