@@ -1,5 +1,5 @@
 # TyPy :space_invader:
-### 1 decorator, multiple possibilities of type checking  
+### One decorator, multiple possibilities of type checking  
 
 **Remember**: TyPy decorator automatically skips arguments without annotations, so don't worry  
 if you want to keep some of them unchecked :wink:
