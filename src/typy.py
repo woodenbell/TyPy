@@ -35,7 +35,7 @@ def typed(f):
             if len(t) != 2:
                 raise InvalidTypeCheckException("Invalid structure typecheck %s, only 2 elements are allowed" % t)
 
-            if not type(v) is t[0]:
+            if not issubclass(type(v), t[0]):
                 raise TypeException("Expected data structure %s to be of type %s, but type %s received" %
                                     (v_name, t[0], type(v)), type(v), t[0])
             else:
@@ -53,6 +53,11 @@ def typed(f):
             raise InvalidTypeCheckException("Invalid type: %s" % t)
 
     annos = f.__annotations__
+
+
+
+
+    
 
     def wrapper(*args, **kargs):
         args_dict = dict(zip(inspect.getfullargspec(f)[0], args))
