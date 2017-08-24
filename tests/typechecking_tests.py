@@ -13,9 +13,9 @@ class MyTestCase(unittest.TestCase):
 
         f1("hello", 33, ("num", 6))
 
-        self.assertRaises(typy.TypeException, f1, 3, "33", ("num", 6))
-        self.assertRaises(typy.TypeException, f1, 3, 33, ("num", "ok"))
-        self.assertRaises(typy.TypeException, f1, True, 33, ("num", 8, 6))
+        self.assertRaises(TypeError, f1, 3, "33", ("num", 6))
+        self.assertRaises(TypeError, f1, 3, 33, ("num", "ok"))
+        self.assertRaises(TypeError, f1, True, 33, ("num", 8, 6))
 
     def test2(self):
         print("Test 2 starting")
@@ -28,9 +28,9 @@ class MyTestCase(unittest.TestCase):
         f2(3, {"dir": {"subdir": "file.txt"}, "dir2": {"subdir2": "file2.txt"}})
         f2(35)
 
-        self.assertRaises(typy.TypeException, f2, True, {})
-        self.assertRaises(typy.TypeException, f2, True, {"hello": 3})
-        self.assertRaises(typy.TypeException, f2, True, {"hello": {"there": 33}})
+        self.assertRaises(TypeError, f2, True, {})
+        self.assertRaises(TypeError, f2, True, {"hello": 3})
+        self.assertRaises(TypeError, f2, True, {"hello": {"there": 33}})
 
     def test3(self):
         print("Test 3 starting")
@@ -44,7 +44,7 @@ class MyTestCase(unittest.TestCase):
                 super().__init__()
 
         f3([MyStr(), MyStr()])
-        self.assertRaises(typy.TypeException, f3, [3, 3])
+        self.assertRaises(TypeError, f3, [3, 3])
 
     def test4(self):
         print("Test 4 starting")
