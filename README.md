@@ -8,7 +8,7 @@ if you want to keep some of them unchecked :wink:
 
     import typy.typed
     
-    
+    @typy.typed
     def f(string: str, numeric: {float, int}, employees: [list, [dict, str]]) -> (str, bool):
         #...
         return ("OK", True)
