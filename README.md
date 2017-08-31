@@ -32,22 +32,22 @@ if you want to keep some of them unchecked :wink:
 **_Remember:_ values with a subclass type of the required type are also accepted**
 
 #### value: type 
-Simplest way of checking, only class of type are allowed
+Simplest way of checking, only an object of specified type is allowed
 
 #### value: { type1, type2, type3... }
-Checks if value type is one of the types
+Checks if value type is one of the given types
   
 #### value: [type1, type2] 
 Checks if the value type is on the first element, then checks if 
 (expecting that the value is a data structure) it's elements are of type 2
-Also, the list can be nested so you can check for data structures inside other data structures
+**Tip:** the list can be nested so you can check for data structures inside other data structures
 *(e.g. [type1, [type2, type3]] )*
 
 #### value: (type1, type2, type3) 
-Checks for a tuple whose elements are of the given types. For example
-if the type checking is set to (bool, str, int), one valid value would be (True, "hello", 3).
-Type checking also fails if the given tuple differs in length of the value. This type checking
-is useful for key-value values (e.g. ("number", 3))
+Checks for a tuple whose elements are of the given types. 
+For example, if the type checking is set to *(bool, str, int)*, one valid value would be *(True, "hello", 3)*  
+This kind of type checking fails if the given tuple differs in length of the value.  
+This feature is useful for checking key-value values (e.g. ("number", 3))
   
 
 
