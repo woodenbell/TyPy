@@ -21,15 +21,15 @@ class MyTestCase(unittest.TestCase):
         print("Test 2 starting")
 
         @typy.typed
-        def f2(numeric: {int, float}, dirtree: [dict, [dict, str]] = {"hello": {"there": "nice_file.txt"}}) -> bool:
+        def f2(numeric: {int, float}, dirtree: [dict, str, [dict, str, str]] = {"hello": {"there": "nice_file.txt"}}) -> bool:
             return True
 
-        f2(3.0, {"dir": {"subdir": "file.txt"}})
-        f2(3, {"dir": {"subdir": "file.txt"}, "dir2": {"subdir2": "file2.txt"}})
+        f2(3.0, dirtree={"dir": {"subdir": "file.txt"}})
+        f2(3, dirtree={"dir": {"subdir": "file.txt"}, "dir2": {"subdir2": "file2.txt"}})
         f2(35)
 
         self.assertRaises(TypeError, f2, True, {})
-        self.assertRaises(TypeError, f2, True, {"hello": 3})
+        self.assertRaises(TypeError, f2, 3, {4: 3})
         self.assertRaises(TypeError, f2, True, {"hello": {"there": 33}})
 
     def test3(self):
@@ -94,7 +94,7 @@ class MyTestCase(unittest.TestCase):
             pass
 
         @typy.typed
-        def f7_2(a: [dict, int, float]):
+        def f7_2(a: [dict, int, float, bool]):
             pass
 
         @typy.typed
@@ -106,7 +106,7 @@ class MyTestCase(unittest.TestCase):
             pass
 
         self.assertRaises(typy.InvalidTypeCheckException, f7, 3)
-        self.assertRaises(typy.InvalidTypeCheckException, f7_2, {"i": 4})
+        self.assertRaises(typy.InvalidTypeCheckException, f7_2, {3 : 4.0})
         self.assertRaises(typy.InvalidTypeCheckException, f7_3, 8)
         self.assertRaises(typy.InvalidTypeCheckException, f7_4, 8)
 

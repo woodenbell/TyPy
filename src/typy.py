@@ -1,4 +1,28 @@
+#!/usr/bin/python3
+
 import inspect
+
+__author__ = "Gabriel Cerqueira"
+
+__copyright__ = """
+
+Copyright 2017 Gabriel Cerqueira
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+"""
+
+__license__ = "Apache 2.0"
 
 # Type checking flags
 NONE_SAFE = 1
@@ -38,41 +62,49 @@ def typed(f):
 
         elif type(t) is dict:
             anno_flags = list(t.values())[0]
-            nflags = list(flags)
+            new_flags = list(flags)
             if type(anno_flags) is not list:
                 raise InvalidTypeCheckException("Invalid type for flags list: %s" % type(anno_flags))
             for flag in anno_flags:
                 if flag == NONE_SAFE:
-                    nflags[0] = True
+                    new_flags[0] = True
                 elif flag == NOT_SUBCLASS:
-                    nflags[1] = True
+                    new_flags[1] = True
                 else:
                     raise InvalidTypeCheckException("Invalid type checking flag")
-            do_typecheck(v, list(t.keys())[0], v_name, flags=tuple(nflags))
+            do_typecheck(v, list(t.keys())[0], v_name, flags=tuple(new_flags))
 
         elif type(t) is set:
             if not type(v) in t:
                 raise TypeError("Expected %s to be of types %s, but type %s received" %
                                 (v_name, list(t), type(v)), type(v), t)
         elif type(t) is list:
-            if len(t) != 2:
-                raise InvalidTypeCheckException("Invalid structure typecheck %s, only 2 elements are allowed" % t)
-            if type(v) == dict:
-                iterable_val = v.values()
-            elif type(v) == set or type(v) == list or type(v) == tuple:
-                iterable_val = list(v)
+            do_typecheck(v, t[0], v_name)
+            if type(v) is dict:
+                if len(t) != 3:
+                    raise InvalidTypeCheckException("Invalid structure typecheck %s, only 3 elements"
+                                                    + " are allowed for dict type checking" % t)
+                for key in v.keys():
+                    do_typecheck(key, t[1], v_name)
+                for value in v.values():
+                    do_typecheck(value, t[2], v_name)
+
+            elif type(v) is set or type(v) is list or type(v) is tuple:
+                if len(t) != 2:
+                    raise InvalidTypeCheckException(
+                        "Invalid structure typecheck %s, only 2 elements are allowed"
+                        + " (except for dict)" % t)
+                for i in list(v):
+                    do_typecheck(i, t[1], v_name)
             else:
                 raise InvalidTypeCheckException("Invalid data structure for typechecking: %s" % type(v))
 
-            for i in iterable_val:
-                do_typecheck(i, t[1], v_name)
-
             if flags[1]:
-                    if not(type(v) is t[0] or (v is None and not flags[0])):
-                        raise TypeError("Expected data structure %s to be of type %s, but type %s received" %
+                if not (type(v) is t[0] or (v is None and not flags[0])):
+                    raise TypeError("Expected data structure %s to be of type %s, but type %s received" %
                                     (v_name, t[0], type(v)), type(v), t[0])
             else:
-                if not (issubclass(type(v), t[0])or (v is None and not flags[0])):
+                if not (issubclass(type(v), t[0]) or (v is None and not flags[0])):
                     raise TypeError("Expected data structure %s to be of type %s, but type %s received" %
                                     (v_name, t[0], type(v)), type(v), t[0])
         else:
