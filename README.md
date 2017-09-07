@@ -11,20 +11,22 @@ To make an argument _None-safe_, use the `NONE_SAFE` [flag](#flags-since-11)
     import typy.typed
     
     @typy.typed
-    def f(string: str, numeric: {float, int}, employees: [list, [dict, str]]) -> (str, bool):
+    def f(string: str, numeric: {float, int}, employees: [list, [dict, str, str]]) -> (str, bool):
         #...
         return ("OK", True)
         
     """
+    All subclasses of type are accepted by dafault, use the NOT_SUBCLASS flag if you don't want them to
+    be accepted.
     
-    string => must be of type str or subclass (subclasses are accepted in all examples)
+    string => must be of type str (or subclass)
     
-    numeric => must be subclass/type of one of the types listed (int , float)
+    numeric => must be one of the types listed (int , float)
     
-    employees => must be sublcass/type of a list containing dictionaries with values of
+    employees => must be  of a list containing dictionaries with keys and values of
     type str
     
-    return type => a tuple with first element of type (/subclass) str and second
+    return type => a tuple with first element of type str and second
     element of type bool
     
     """
