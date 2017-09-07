@@ -5,7 +5,7 @@
 if you want to keep some of them unchecked :wink:
 
 **_Warning_:** after version 1.1, TyPy is no longer _None-safe_ by default.  
-To make an argument _None-safe_, use the `NONE_SAFE` [flag](#flags)
+To make an argument _None-safe_, use the `NONE_SAFE` [flag](#flags-since-11)
 ### Before we get started, take a look at this example:
 
     import typy.typed
@@ -31,7 +31,7 @@ To make an argument _None-safe_, use the `NONE_SAFE` [flag](#flags)
     
 ## Type checking specifications
 
-**_Remember:_ values with a subclass type of the required type are also accepted (except if you use the `NOT_SUBCLASS` [flag](#flags))**
+**_Remember:_ values with a subclass type of the required type are also accepted (except if you use the `NOT_SUBCLASS` [flag](#flags-since-11))**
 
 #### value: type 
 Simplest way of checking, only an object of specified type is allowed
@@ -75,7 +75,15 @@ This feature is useful for checking key-value values (e.g. ("number", 3))
         pass
   
 
+### none_safe decorator
+The `none_safe` decorator is a small utility for None-safety without type checking. Here's a small example:
 
+    import typy
+    
+    @typy.none_safe
+    def func(never_none, never_none_too):
+        pass
+     
 
 
     
