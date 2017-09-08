@@ -1,11 +1,15 @@
 # TyPy :space_invader:
 ### One decorator, multiple possibilities of type checking  
 
+**TyPy can check types on data structures, tuples (separate types)
+and a list of allowed types.**
+
 **Remember**: TyPy decorator automatically skips arguments without annotations, so don't worry  
 if you want to keep some of them unchecked :wink:
 
 **_Warning_:** after version 1.1, TyPy is no longer _None-safe_ by default.  
 To make an argument _None-safe_, use the `NONE_SAFE` [flag](#flags-since-11)
+___
 ### Before we get started, take a look at this example:
 
     import typy.typed
@@ -31,6 +35,7 @@ To make an argument _None-safe_, use the `NONE_SAFE` [flag](#flags-since-11)
     
     """
     
+___
 ## Type checking specifications
 
 **_Remember:_ values with a subclass type of the required type are also accepted (except if you use the `NOT_SUBCLASS` [flag](#flags-since-11))**
@@ -80,7 +85,7 @@ This feature is useful for checking key-value values (e.g. ("number", 3))
     def func(a : {[dict, int] : [typy.NONE_SAFE]}):
         pass
   
-
+___
 ### none_safe decorator
 The `none_safe` decorator is a small utility for None-safety without type checking. Here's a small example:
 
