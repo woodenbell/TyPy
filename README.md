@@ -77,7 +77,7 @@ This feature is useful for checking key-value values (e.g. ("number", 3))
   
   #### {type-checking : [flag1, flag2....]}
   When using flags, you will use a dictionary where the only key is the type checking specification,
-  and the only value will be a list (only lists will be accepted) conatining all the flags.
+  and the only value is a list (only lists will be accepted) containing all the flags.
   
   Take an example below:
   
