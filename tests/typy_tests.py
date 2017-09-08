@@ -110,6 +110,14 @@ class MyTestCase(unittest.TestCase):
         self.assertRaises(typy.InvalidTypeCheckException, f7_3, 8)
         self.assertRaises(typy.InvalidTypeCheckException, f7_4, 8)
 
+    def test8(self):
+        print("Test 8 starting")
 
+        @typy.typed
+        def f8(a: int, b: {bool, float}, c: [dict, int, [list, str]],\
+               d: (bool, int, str), e: float) -> (bool, str):
+            return (True, "OK")
+
+        f8(3, True, {3: ["one", "two"]}, (False, 33, "hello"), 34.0)
 if __name__ == '__main__':
     unittest.main()

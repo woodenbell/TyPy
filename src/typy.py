@@ -87,7 +87,7 @@ def typed(f):
                 for key in v.keys():
                     do_typecheck(key, t[1], v_name)
                 for value in v.values():
-                    do_typecheck(value, t[2], v_name)
+                    do_typecheck(value, t[2], v_name, flags=flags)
 
             elif type(v) is set or type(v) is list or type(v) is tuple:
                 if len(t) != 2:
@@ -95,18 +95,9 @@ def typed(f):
                         "Invalid structure typecheck %s, only 2 elements are allowed"
                         + " (except for dict)" % t)
                 for i in list(v):
-                    do_typecheck(i, t[1], v_name)
+                    do_typecheck(i, t[1], v_name, flags=flags)
             else:
                 raise InvalidTypeCheckException("Invalid data structure for typechecking: %s" % type(v))
-
-            if flags[1]:
-                if not (type(v) is t[0] or (v is None and not flags[0])):
-                    raise TypeError("Expected data structure %s to be of type %s, but type %s received" %
-                                    (v_name, t[0], type(v)), type(v), t[0])
-            else:
-                if not (issubclass(type(v), t[0]) or (v is None and not flags[0])):
-                    raise TypeError("Expected data structure %s to be of type %s, but type %s received" %
-                                    (v_name, t[0], type(v)), type(v), t[0])
         else:
             raise InvalidTypeCheckException("Invalid type: %s" % t)
 
