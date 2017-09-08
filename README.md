@@ -50,7 +50,7 @@ Checks if the value type is on the first element, then checks if
 
 #### value: [dict_type, key_type, value_type]
 ##### Works for  (since 1.1)
-The third element was introduced in @v1.1 to separate the key
+The third element was introduced in [version 1.1](https://github.com/WoodenBell/TyPy/releases/tag/v1.1) to separate the key
 type and value type. Both types were indicated by the second value before  
 the update.
 
