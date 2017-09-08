@@ -41,14 +41,18 @@ Simplest way of checking, only an object of specified type is allowed
 #### value: { type1, type2, type3... }
 Checks if value type is one of the given types
   
-#### value: [type1, type2] (works for set, tuple and list)
+#### value: [type1, type2] 
+##### Works for set, tuple and list
 Checks if the value type is on the first element, then checks if 
 (expecting that the value is a data structure) it's elements are of type 2
 **Tip:** the list can be nested so you can check for data structures inside other data structures
 *(e.g. [type1, [type2, type3]] )*
 
-**_Using on dict (since 1.1):_** to use this type checking on dict type, you will need to specify 3 elements:  
- `[data structure type, key type, value type]`
+#### value: [dict_type, key_type, value_type]
+##### Works for  (since 1.1)
+The third element was introduced in @v1.1 to separate the key
+type and value type. Both types were indicated by the second value before  
+the update.
 
 #### value: (type1, type2, type3) 
 Checks for a tuple whose elements are of the given types. 
