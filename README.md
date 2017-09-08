@@ -82,7 +82,7 @@ This feature is useful for checking key-value values (e.g. ("number", 3))
   Take an example below:
   
     @typy.typed
-    def func(a : {[dict, int] : [typy.NONE_SAFE]}):
+    def func(a : {[list, int] : [typy.NONE_SAFE]}):
         pass
   
 ___
