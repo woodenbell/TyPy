@@ -73,7 +73,7 @@ This feature is useful for checking key-value values (e.g. ("number", 3))
   - NONE_SAFE: specifies that the argument will not accept _None_ values.
   - NOT_SUBCLASS: specifies that subclasses of the type will not be accepted.
   
-  Using flags is versy simple, take a look:
+  Using flags is very simple, take a look:
   
   #### {type-checking : [flag1, flag2....]}
   When using flags, you will use a dictionary where the only key is the type checking specification,
