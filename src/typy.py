@@ -2,11 +2,11 @@
 
 import inspect
 
-__author__ = "Gabriel Cerqueira"
+__author__ = "WoodenBell"
 
 __copyright__ = """
 
-Copyright 2017 Gabriel Cerqueira
+Copyright 2017 Gabriel C. Barbosa
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

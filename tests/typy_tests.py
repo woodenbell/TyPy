@@ -3,7 +3,7 @@ import unittest
 import typy
 
 
-class MyTestCase(unittest.TestCase):
+class TypyTestCase(unittest.TestCase):
     def test1(self):
         print("Test 1 starting")
 
